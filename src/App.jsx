@@ -1,7 +1,7 @@
 import { Banner } from './components/Banner';
 import { Counter } from './components/Counter';
 import { Header, Layout } from './components/Layout';
-import { UsersList } from './components/Users';
+// import { UsersList } from './components/Users';
 
 export const App = () => {
   return (
@@ -10,7 +10,7 @@ export const App = () => {
 
       <Counter />
       <Banner />
-      <UsersList />
+      {/* <UsersList /> */}
     </Layout>
   );
 };

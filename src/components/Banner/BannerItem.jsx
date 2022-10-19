@@ -15,7 +15,7 @@ export const BannerItem = ({ title, text, children, onClick }) => {
         <p>{text}</p>
       </div>
 
-      <button type="button" className="btn btn-primary" onClick={onClick}>
+      <button type="button" className="btn btn-primary" onClick={console.log}>
         Call to action
       </button>
     </div>
