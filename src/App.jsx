@@ -1,3 +1,5 @@
+import { login } from 'helpers/login';
+
 import { Banner } from './components/Banner';
 import { Counter } from './components/Counter';
 import { Header, Layout } from './components/Layout';
@@ -10,6 +12,9 @@ export const App = () => {
 
       <Counter />
       <Banner />
+      <button type="button" onClick={login}>
+        login
+      </button>
       {/* <UsersList /> */}
     </Layout>
   );
