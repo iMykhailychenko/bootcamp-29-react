@@ -1,20 +1,16 @@
-// import { UsersList } from './components/Users/UsersList';
-import { UsersList } from 'components';
-
-// const users = [
-//   {
-//     id: nanoid(),
-//     name: 'sdsds',
-//   },
-// ];
+import { Banner } from './components/Banner';
+import { Counter } from './components/Counter';
+import { Header, Layout } from './components/Layout';
+import { UsersList } from './components/Users';
 
 export const App = () => {
-  return <UsersList />;
+  return (
+    <Layout>
+      <Header title="Hello world!" />
+
+      <Counter />
+      <Banner />
+      <UsersList />
+    </Layout>
+  );
 };
-
-// [<User>, User, User ....]
-
-// [{}, {}, {}] map -> [<></>, <></>, <></>]
-
-// 'ssaaaf' -> { a: 3, s: 2, f: 1 } -> 'asf'
-// 'ssaaaf' -> 'saf'

@@ -1,1 +1,2 @@
-export { UsersList } from './UsersList';
+export * from './UsersList';
+export * from './UsersItem';
