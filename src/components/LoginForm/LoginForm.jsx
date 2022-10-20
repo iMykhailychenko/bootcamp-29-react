@@ -2,7 +2,6 @@ import { Component } from 'react';
 
 import { login } from 'helpers/login';
 
-
 export class LoginForm extends Component {
   state = {
     email: '',
