@@ -13,21 +13,28 @@ const TEXT =
 export class Banner extends Component {
   state = {
     isModalOpen: false,
+    title: 'hello',
+  };
+
+  handleToggleModal = () => {
+    this.setState(state => {
+      return { isModalOpen: !state.isModalOpen };
+    });
   };
 
   render() {
-    const { isModalOpen } = this.state;
+    const { isModalOpen, title } = this.state;
 
     return (
       <>
         <div className="row mb-5 p-5 row-cols-2 bg-light">
-          <BannerItem title="Featured title" text={TEXT}>
+          <BannerItem title="Featured title" text={TEXT} onClick={this.handleToggleModal}>
             <IoCashOutline />
           </BannerItem>
         </div>
 
         {isModalOpen && (
-          <Modal>
+          <Modal title={title} onCloseModal={this.handleToggleModal}>
             <BannerModal />
           </Modal>
         )}

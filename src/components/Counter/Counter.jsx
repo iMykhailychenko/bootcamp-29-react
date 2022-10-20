@@ -20,53 +20,47 @@ import { Component } from 'react';
  *
  */
 
+const mobilePhones = [
+  { title: 'iPhone', name: 'iphone' },
+  { title: 'Android', name: 'android' },
+];
+
 export class Counter extends Component {
   state = {
-    counter: 0,
+    iphone: 0,
+    android: 0,
   };
 
-  handlePlus = () => {
-    this.setState(prevState => {
-      return { counter: prevState.counter + 1 };
+  handleChange = event => {
+    const { name } = event.target;
+
+    this.setState(state => {
+      return { [name]: state[name] + 1 };
     });
-  };
-
-  handleMinus = () => {
-    this.setState(prevState => {
-      const result = prevState.counter - 1;
-      if (result < 0) {
-        return prevState;
-      }
-
-      return { counter: result };
-    });
-  };
-
-  handleReset = () => {
-    this.setState({ counter: 0 });
   };
 
   render() {
-    const { counter } = this.state;
-
     return (
       <div className="mb-5 p-5 text-white bg-dark rounded-3">
         <h2 className="text-center">Counter</h2>
-        <p className="text-center my-5" style={{ fontSize: 80 }}>
-          {counter}
-        </p>
+        {mobilePhones.map(item => (
+          <p key={item.name} className="text-center my-5" style={{ fontSize: 80 }}>
+            {item.title} - {this.state[item.name]}
+          </p>
+        ))}
+
         <div className="d-flex align-items-center justify-content-center w-100">
-          <button onClick={this.handlePlus} className="btn p-3 btn-outline-light w-25 mx-2" type="button">
-            Plus
-          </button>
-
-          <button onClick={this.handleMinus} className="btn p-3 btn-outline-light w-25 mx-2" type="button">
-            Minus
-          </button>
-
-          <button onClick={this.handleReset} className="btn p-3 btn-outline-light w-25 mx-2" type="button">
-            Reset
-          </button>
+          {mobilePhones.map(item => (
+            <button
+              key={item.name}
+              name={item.name}
+              type="button"
+              onClick={this.handleChange}
+              className="btn p-3 btn-outline-light w-25 mx-2"
+            >
+              {item.title}
+            </button>
+          ))}
         </div>
       </div>
     );
