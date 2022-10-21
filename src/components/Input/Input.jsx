@@ -1,5 +1,6 @@
-import classNames from 'classnames';
 import { Component } from 'react';
+
+import classNames from 'classnames';
 
 export class Input extends Component {
   state = {
