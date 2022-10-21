@@ -11,8 +11,8 @@ body {
     'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
-
-a, button {
+a,
+button {
   display: block;
   background: none;
   border: none;
@@ -27,7 +27,7 @@ svg {
 @keyframes sale {
   0% {
     color: red;
-  } 
+  }
   30% {
     color: green;
   }

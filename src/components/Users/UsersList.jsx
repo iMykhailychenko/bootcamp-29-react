@@ -2,7 +2,8 @@ import { Component } from 'react';
 
 import usersJson from '../../assets/users.json';
 
-import { UsersItem } from './UsersItem';
+import { UsersItem } from './UsersItem_old';
+// import { UsersItem } from './UsersItem';
 
 export class UsersList extends Component {
   state = {
