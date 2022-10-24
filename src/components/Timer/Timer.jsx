@@ -5,14 +5,32 @@ import { formatTime } from 'helpers/time';
 const ONE_SECOND = 1000;
 
 export class Timer extends Component {
+  // constructor() {
+  //   super();
+
+  //   this.intervalId = null;
+  //   this.state = {
+  //     time: new Date(),
+  //   };
+  // }
+
   state = {
     time: new Date(),
   };
 
+  intervalId = null;
+
   componentDidMount() {
-    setInterval(() => {
+    this.intervalId = setInterval(() => {
+      console.log('setInterval');
       this.setState({ time: new Date() });
     }, ONE_SECOND);
+  }
+
+  componentWillUnmount() {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
   }
 
   render() {

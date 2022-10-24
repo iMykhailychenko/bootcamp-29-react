@@ -4,11 +4,46 @@ import usersJson from '../../assets/users.json';
 
 import { UsersItem } from './UsersItem';
 
+const USERS_LIST_LOCAL_KEY = 'users-list';
+
 export class UsersList extends Component {
   state = {
     search: '',
-    usersList: usersJson,
+    usersList: [],
+    isLoading: false,
   };
+
+  componentDidMount() {
+    // стра лоадера
+    this.setState({ isLoading: true });
+
+    setTimeout(() => {
+      // данні з бекенду
+      const localUsersList = localStorage.getItem(USERS_LIST_LOCAL_KEY);
+      if (localUsersList) {
+        this.setState({ usersList: JSON.parse(localUsersList) });
+      } else {
+        this.setState({ usersList: usersJson });
+      }
+
+      // зупинити лоадер
+      this.setState({ isLoading: false });
+    }, 2000);
+  }
+
+  componentDidUpdate(_, prevState) {
+    const { usersList, isLoading } = this.state;
+
+    // this.setState({ isLoading: true });
+
+    if (prevState.isLoading !== isLoading) {
+      this.setState({ search: 'asd' });
+    }
+
+    if (prevState.usersList !== usersList) {
+      localStorage.setItem(USERS_LIST_LOCAL_KEY, JSON.stringify(usersList));
+    }
+  }
 
   handleDeleteUser = id => {
     this.setState(prevState => {
@@ -20,12 +55,8 @@ export class UsersList extends Component {
     this.setState({ search: event.target.value });
   };
 
-  handleSubmitSearch = () => {
-    console.log(this.state);
-  };
-
   render() {
-    const { search, usersList } = this.state;
+    const { search, usersList, isLoading } = this.state;
     const filteredUsers = usersList.filter(user => user.name.toLowerCase().includes(search.toLowerCase()));
 
     return (
@@ -38,10 +69,9 @@ export class UsersList extends Component {
             value={search}
             onChange={this.handleSearchChange}
           />
-          <button className="btn btn-primary" type="button" onClick={this.handleSubmitSearch}>
-            Search
-          </button>
         </div>
+
+        {isLoading && <p>Loading....</p>}
 
         <div className="mb-5">
           {filteredUsers.map(user => (

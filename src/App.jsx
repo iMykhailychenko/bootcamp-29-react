@@ -1,15 +1,23 @@
+import { Component } from 'react';
+
 import { Header, Layout } from 'components/Layout';
-import { Timer } from 'components/Timer/Timer';
-import { UsersList } from 'components/Users';
+import { Rerender } from 'components/Rerender';
 
-export const App = () => {
-  return (
-    <Layout>
-      <Header title="Hello world!" />
+export class App extends Component {
+  render() {
+    return (
+      <Layout>
+        <Header title="Hello world!" />
 
-      <Timer />
+        <Rerender />
 
-      <UsersList />
-    </Layout>
-  );
-};
+        {/* <Timer /> */}
+        {/* <Counter /> */}
+
+        {/* <TimerModal /> */}
+
+        {/* <UsersList /> */}
+      </Layout>
+    );
+  }
+}
