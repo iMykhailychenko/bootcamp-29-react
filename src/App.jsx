@@ -1,16 +1,15 @@
-import { Banner } from './components/Banner';
-import { Counter } from './components/Counter';
-import { Header, Layout } from './components/Layout';
-// import { UsersList } from './components/Users';
+import { Component } from 'react';
 
-export const App = () => {
-  return (
-    <Layout>
-      <Header title="Hello world!" />
+import { Header, Layout } from 'components/Layout';
+import { Posts } from 'components/Posts';
 
-      <Counter />
-      <Banner />
-      {/* <UsersList /> */}
-    </Layout>
-  );
-};
+export class App extends Component {
+  render() {
+    return (
+      <Layout>
+        <Header title="Hello world!" />
+        <Posts />
+      </Layout>
+    );
+  }
+}

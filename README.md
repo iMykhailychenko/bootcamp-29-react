@@ -1,18 +1,17 @@
-## Lesson 1/2 - 17/10/2022 - 18/10/2022
+## Lesson 5 - 24/10/2022
+- Життєвий цикл компонента. http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+- методи життєвого циклу компонент-класів.
+- Збереження колекції юзерів в localStorage (componentDidMount та componentDidUpdate)
+- Модальне вікно (componentDidMount та componentWillUnmount)
+- Таймер і memory leak з setState() без componentWillUnmount
+- shouldComponentUpdate / PureComponent
+- Портали
 
-- Навіщо потрібні JS-фреймворки?
-- Веб-додатки, порівняння MPA та SPA
-- Концепція Virtual DOM
-- create-react-app
-- Пакети react та react-dom
-- React-елементи
-- JSX як шаблонізатор. Вирази та рендер за умовою.
-- Компоненти-функції
-- Передача даних через Props
-- Дефолтні значення пропсів у компонентах-функціях
-- Інструменти розробника - React DevTools
-- Основи композиції компонентів
-- Пакет prop-types, властивість propTypes
-- Робота з колекціями, ключі
-- React strict mode
-- Аліаси та абсолютні імпорти
+## Lesson 6 - 13/09/2022
+https://github.com/iMykhailychenko/goit-blog-backend
+
+- Методи життєвого циклу та HTTP-запити
+- Стан та компонент для індикатора завантаження
+- Стан та компонент для обробки помилки
+- Паттерн "State machine" для зберігання статусу запиту
+- Витік пам'яті при розмонтуванні компонента з активним запитом HTTP
