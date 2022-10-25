@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/bootcamp-29-react/static/css/main.ec089327.css",
+    "main.js": "/bootcamp-29-react/static/js/main.aaf8990b.js",
+    "static/media/713761_big_8857bc5285.jpeg": "/bootcamp-29-react/static/media/713761_big_8857bc5285.4a8a759c1673e3abd7cb.jpeg",
+    "static/media/image.png": "/bootcamp-29-react/static/media/image.4c681b241e02299b56dc.png",
+    "index.html": "/bootcamp-29-react/index.html",
+    "main.ec089327.css.map": "/bootcamp-29-react/static/css/main.ec089327.css.map",
+    "main.aaf8990b.js.map": "/bootcamp-29-react/static/js/main.aaf8990b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ec089327.css",
+    "static/js/main.aaf8990b.js"
+  ]
+}
