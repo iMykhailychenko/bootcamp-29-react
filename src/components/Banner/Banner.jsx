@@ -35,21 +35,3 @@ export class Banner extends Component {
     );
   }
 }
-
-// export const Banner = () => {
-//   return (
-//     <>
-//       <div className="row mb-5 p-5 row-cols-2 bg-light">
-//         <BannerItem title="Featured title" text={TEXT}>
-//           <IoCashOutline />
-//         </BannerItem>
-//       </div>
-
-//       {isModalOpen && (
-//         <Modal>
-//           <BannerModal />
-//         </Modal>
-//       )}
-//     </>
-//   );
-// };

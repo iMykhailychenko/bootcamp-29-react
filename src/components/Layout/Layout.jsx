@@ -1,4 +1,4 @@
-import { ConfettiContainer, EasterEgg } from 'components/Service';
+import { ConfettiContainer, EasterEgg } from 'components/Utils';
 import { PropTypes } from 'prop-types';
 
 import { Sidebar } from './Sidebar/Sidebar';
