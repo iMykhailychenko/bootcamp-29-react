@@ -1,14 +1,18 @@
 import { Component } from 'react';
 
+import { Counter } from 'components/Counter';
 import { Header, Layout } from 'components/Layout';
-import { Posts } from 'components/Posts';
+import { TimerModal } from 'components/Timer/TimerModal';
+// import { Posts } from 'components/Posts';
 
 export class App extends Component {
   render() {
     return (
       <Layout>
         <Header title="Hello world!" />
-        <Posts />
+        <TimerModal />
+        <Counter />
+        {/* <Posts /> */}
       </Layout>
     );
   }
