@@ -1,33 +1,10 @@
-import { useState, useCallback, useMemo } from 'react';
-
 import usersJson from '../../assets/users.json';
 
 import { UsersItem } from './UsersItem';
+import { useUserList } from './hook';
 
 export const UsersList = () => {
-  const [search, setSearch] = useState('');
-  const [usersList, setUsersList] = useState(usersJson);
-
-  const handleSearchChange = event => {
-    setSearch(event.target.value);
-  };
-
-  const handleDeleteUser = useCallback(id => {
-    setUsersList(prevState => {
-      return prevState.filter(user => user.id !== id);
-    });
-  }, []);
-
-  const filteredUsers = useMemo(() => {
-    return usersList.filter(user => {
-      return user.name.toLowerCase().includes(search.toLowerCase());
-    });
-  }, [usersList, search]);
-
-  // const sum = 1 + 3;
-
-  // 'asdf'.includes('f') -> true
-  // for asdf -> true
+  const { search, usersList, changeSearch, deletUser } = useUserList(usersJson);
 
   return (
     <>
@@ -37,13 +14,13 @@ export const UsersList = () => {
           className="form-control"
           placeholder="Search username"
           value={search}
-          onChange={handleSearchChange}
+          onChange={changeSearch}
         />
       </div>
 
       <div className="mb-5">
-        {filteredUsers.map(user => (
-          <UsersItem key={user.id} user={user} onDeleteUser={handleDeleteUser} />
+        {usersList.map(user => (
+          <UsersItem key={user.id} user={user} onDeleteUser={deletUser} />
         ))}
       </div>
     </>
