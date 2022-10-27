@@ -1,4 +1,4 @@
-import { PureComponent, useCallback, useState, memo } from 'react';
+import { useCallback, useState, memo } from 'react';
 
 // class Button extends PureComponent {
 //   render() {
