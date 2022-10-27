@@ -1,115 +1,62 @@
-import { useEffect, useState } from 'react';
+import { useState, useCallback } from 'react';
 
 export const Counter = () => {
-  const [counter, setCounter] = useState(0);
-  const [counter2, setCounter2] = useState(0);
+  const [counterA, setCounterA] = useState(0);
+  const [counterB, setCounterB] = useState(0);
 
-  useEffect(() => {
-    console.log(counter);
-    return () => {
-      console.log('return in useEffect');
+  // const handleCounter = () => {
+  //   setCounterA(prevCounter => {
+  //     return prevCounter + 1;
+  //   });
+  // };
+
+  const handleCounter = useCallback(event => {
+    const counterMap = {
+      counterA: setCounterA,
+      counterB: setCounterB,
     };
-  }, [counter]);
 
-  // useEffect(() => {
-  //   console.log(counter2);
-  // }, [counter2]);
-  // prevState.counter2 !== this.state.counter2
+    const { name } = event.target;
+    counterMap[name](prev => prev + 1);
 
-  //   handlePlus = () => {
-  //     this.setState(prevState => {
-  //       return { counter: prevState.counter + 1 };
-  //     });
-  //   };
-  const handlePlus = () => {
-    setCounter(prevCounter => {
-      return prevCounter + 1;
-    });
-  };
+    // switch (name) {
+    //   case 'counterA':
+    //     setCounterA(prev => prev + 1);
+    //     break;
 
-  const handleMinus = () => {
-    setCounter2(prevCounter => {
-      return prevCounter + 1;
-    });
-  };
+    //   case 'counterB':
+    //     setCounterB(prev => prev + 1);
+    //     break;
 
-  //   handleReset = () => {
-  //     this.setState({ counter: 0 });
-  //   };
-  const handleReset = () => {
-    setCounter(0);
-  };
+    //   default:
+    //     break;
+    // }
+
+    // if (name === 'counterA') {
+    //   setCounterA(prev => prev + 1);
+    // } else if (name === 'counterB') {
+    //   setCounterB(prev => prev + 1);
+    // }
+  }, []);
 
   return (
     <div className="mb-5 p-5 text-white bg-dark rounded-3">
       <h2 className="text-center">Counter</h2>
       <p className="text-center my-5" style={{ fontSize: 80 }}>
-        counter: {counter}
+        Counter A: {counterA}
       </p>
       <p className="text-center my-5" style={{ fontSize: 80 }}>
-        counter2: {counter2}
+        Counter B: {counterB}
       </p>
       <div className="d-flex align-items-center justify-content-center w-100">
-        <button onClick={handlePlus} className="btn p-3 btn-outline-light w-25 mx-2" type="button">
-          Plus
+        <button name="counterA" onClick={handleCounter} className="btn p-3 btn-outline-light w-25 mx-2" type="button">
+          Counter A
         </button>
 
-        <button onClick={handleMinus} className="btn p-3 btn-outline-light w-25 mx-2" type="button">
-          Minus
-        </button>
-
-        <button onClick={handleReset} className="btn p-3 btn-outline-light w-25 mx-2" type="button">
-          Reset
+        <button name="counterB" onClick={handleCounter} className="btn p-3 btn-outline-light w-25 mx-2" type="button">
+          Counter B
         </button>
       </div>
     </div>
   );
 };
-
-// export class Counter extends Component {
-//   state = {
-//     counter: 0,
-//   };
-
-//   handlePlus = () => {
-//     this.setState(prevState => {
-//       return { counter: prevState.counter + 1 };
-//     });
-//   };
-
-//   handleMinus = () => {
-//     this.setState(prevState => {
-//       return { counter: prevState.counter - 1 };
-//     });
-//   };
-
-//   handleReset = () => {
-//     this.setState({ counter: 0 });
-//   };
-
-//   render() {
-//     const { counter } = this.state;
-
-//     return (
-//       <div className="mb-5 p-5 text-white bg-dark rounded-3">
-//         <h2 className="text-center">Counter</h2>
-//         <p className="text-center my-5" style={{ fontSize: 80 }}>
-//           {counter}
-//         </p>
-//         <div className="d-flex align-items-center justify-content-center w-100">
-//           <button onClick={this.handlePlus} className="btn p-3 btn-outline-light w-25 mx-2" type="button">
-//             Plus
-//           </button>
-
-//           <button onClick={this.handleMinus} className="btn p-3 btn-outline-light w-25 mx-2" type="button">
-//             Minus
-//           </button>
-
-//           <button onClick={this.handleReset} className="btn p-3 btn-outline-light w-25 mx-2" type="button">
-//             Reset
-//           </button>
-//         </div>
-//       </div>
-//     );
-//   }
-// }
