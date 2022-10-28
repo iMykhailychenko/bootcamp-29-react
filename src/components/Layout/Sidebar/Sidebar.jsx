@@ -2,7 +2,6 @@ import { useAuth } from 'context/auth.contex';
 
 export const Sidebar = () => {
   const { isAuth, setIsAuth } = useAuth();
-  console.log(isAuth);
 
   const login = () => {
     setIsAuth(true);

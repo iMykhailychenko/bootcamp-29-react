@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
 
 import { PropTypes } from 'prop-types';
+import ReactDOM from 'react-dom';
+
+const modalRoot = document.getElementById('modal-portal');
 
 export const Modal = ({ children, title = 'My modal', onCloseModal }) => {
   // const [counter, setCounter] = useState(0);
@@ -26,7 +29,7 @@ export const Modal = ({ children, title = 'My modal', onCloseModal }) => {
     }
   };
 
-  return (
+  return ReactDOM.createPortal(
     <>
       <div className="modal-backdrop fade show" />
 
@@ -43,7 +46,8 @@ export const Modal = ({ children, title = 'My modal', onCloseModal }) => {
           </div>
         </div>
       </div>
-    </>
+    </>,
+    modalRoot,
   );
 };
 
@@ -96,3 +100,10 @@ export const Modal = ({ children, title = 'My modal', onCloseModal }) => {
 Modal.propType = {
   children: PropTypes.oneOf([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]).isRequired,
 };
+
+// const reactDOM = {
+//   createRoot: () => {},
+//   createPortal: () => {},
+// };
+
+// reactDOM.createPortal()
