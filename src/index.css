@@ -60,3 +60,8 @@ svg {
   background: #fff;
   border-top: 1px solid #000;
 }
+
+.nav-btn {
+  margin-left: -10px;
+  text-align: left;
+}

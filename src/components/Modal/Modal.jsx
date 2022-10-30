@@ -5,43 +5,37 @@ import ReactDOM from 'react-dom';
 
 const modalRoot = document.getElementById('modal-portal');
 
-export const Modal = ({ children, title = 'My modal', onCloseModal }) => {
-  // const [counter, setCounter] = useState(0);
-
+export const Modal = ({ children, onModalClose }) => {
   useEffect(() => {
-    const handleKeyModalClose = event => {
+    const handleKeyClose = event => {
       if (event.code === 'Escape') {
-        onCloseModal();
-        // console.log(counter);
+        onModalClose();
       }
     };
 
-    window.addEventListener('keydown', handleKeyModalClose);
+    window.addEventListener('keydown', handleKeyClose);
 
     return () => {
-      window.removeEventListener('keydown', handleKeyModalClose);
+      window.removeEventListener('keydown', handleKeyClose);
     };
-  }, [onCloseModal]);
+  }, [onModalClose]);
 
   const handleBackdropClick = event => {
     if (event.target === event.currentTarget) {
-      onCloseModal();
+      onModalClose();
     }
   };
 
   return ReactDOM.createPortal(
     <>
       <div className="modal-backdrop fade show" />
-
       <div className="modal fade show" style={{ display: 'block' }} onClick={handleBackdropClick}>
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title">{title}</h5>
-
-              <button type="button" className="btn-close" aria-label="Close" onClick={onCloseModal} />
+              <h5 className="modal-title">Modal title</h5>
+              <button type="button" className="btn-close" aria-label="Close" onClick={onModalClose} />
             </div>
-
             <div className="modal-body">{children}</div>
           </div>
         </div>
@@ -53,29 +47,29 @@ export const Modal = ({ children, title = 'My modal', onCloseModal }) => {
 
 // export class Modal extends Component {
 //   componentDidMount() {
-//     window.addEventListener('keydown', this.handleKeyModalClose);
+//     window.addEventListener('keydown', this.handleKeyClose);
 //   }
 
 //   componentWillUnmount() {
-//     window.removeEventListener('keydown', this.handleKeyModalClose);
+//     window.removeEventListener('keydown', this.handleKeyClose);
 //   }
 
-//   handleKeyModalClose = event => {
+//   handleKeyClose = event => {
 //     if (event.code === 'Escape') {
-//       this.props.onCloseModal();
+//       this.props.onModalClose();
 //     }
 //   };
 
 //   handleBackdropClick = event => {
 //     if (event.target === event.currentTarget) {
-//       this.props.onCloseModal();
+//       this.props.onModalClose();
 //     }
 //   };
 
 //   render() {
-//     const { children, title = 'My modal', onCloseModal } = this.props;
+//     const { children, onModalClose } = this.props;
 
-//     return (
+//     return ReactDOM.createPortal(
 //       <>
 //         <div className="modal-backdrop fade show" />
 
@@ -83,27 +77,21 @@ export const Modal = ({ children, title = 'My modal', onCloseModal }) => {
 //           <div className="modal-dialog modal-dialog-centered">
 //             <div className="modal-content">
 //               <div className="modal-header">
-//                 <h5 className="modal-title">{title}</h5>
-
-//                 <button type="button" className="btn-close" aria-label="Close" onClick={onCloseModal} />
+//                 <h5 className="modal-title">Modal title</h5>
+//                 <button type="button" className="btn-close" aria-label="Close" onClick={onModalClose} />
 //               </div>
 
 //               <div className="modal-body">{children}</div>
 //             </div>
 //           </div>
 //         </div>
-//       </>
+//       </>,
+//       modalRoot,
 //     );
 //   }
 // }
 
 Modal.propType = {
-  children: PropTypes.oneOf([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]).isRequired,
+  children: PropTypes.oneOf([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
+  onModalClose: PropTypes.func.isRequired,
 };
-
-// const reactDOM = {
-//   createRoot: () => {},
-//   createPortal: () => {},
-// };
-
-// reactDOM.createPortal()
