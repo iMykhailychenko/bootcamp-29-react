@@ -2,6 +2,7 @@ import { ToastContainer } from 'react-toastify';
 
 import { ConfettiContainer } from '../Confetti';
 
+import { EasterEgg } from './EasterEgg/EasterEgg';
 import { Sidebar } from './Sidebar/Sidebar';
 
 export const Layout = ({ children }) => {
@@ -14,6 +15,8 @@ export const Layout = ({ children }) => {
           <div className="tab-pane fade show active">{children}</div>
         </main>
       </div>
+
+      <EasterEgg />
 
       <ToastContainer />
       <ConfettiContainer />
