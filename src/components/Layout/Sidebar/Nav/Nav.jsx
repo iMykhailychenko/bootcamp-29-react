@@ -1,21 +1,28 @@
+import { NavLink } from 'react-router-dom';
+
 export const Nav = () => {
+  const activeClassName = ({ isActive }) => (isActive ? 'btn nav-btn btn-primary' : 'btn nav-btn btn-light');
+
   return (
     <div className="d-flex flex-column justify-content-between h-100">
       <div className="d-flex flex-column justify-content-between">
         <h2 className="h3 mb-4">Welcome back!</h2>
 
-        <a href="/" className="btn nav-btn btn-light">
+        <NavLink to="/" end className={activeClassName}>
           Home page
-        </a>
-        <a href="/posts" className="btn nav-btn btn-light">
+        </NavLink>
+
+        <NavLink to="/posts" className={activeClassName}>
           Posts list
-        </a>
-        <a href="/new-post" className="btn nav-btn btn-light">
+        </NavLink>
+
+        <NavLink to="/new-post" className={activeClassName}>
           Create new post
-        </a>
-        <a href="/exercises" className="btn nav-btn btn-light">
+        </NavLink>
+
+        <NavLink to="/exercises" className={activeClassName}>
           React exercises
-        </a>
+        </NavLink>
       </div>
     </div>
   );

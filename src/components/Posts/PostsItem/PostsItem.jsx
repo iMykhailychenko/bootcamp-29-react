@@ -1,6 +1,6 @@
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
-
-import { cutString } from '../../../helpers/cut-string';
+import { cutString } from 'helpers/cut-string';
+import { Link } from 'react-router-dom';
 
 export const PostsItem = ({ post }) => {
   return (
@@ -29,9 +29,9 @@ export const PostsItem = ({ post }) => {
               Delete post
             </button>
 
-            <a href={`/posts/${post.id}`} className="btn btn-link ms-3">
+            <Link to={`/posts/${post.id}`} className="btn btn-link ms-3">
               Read post
-            </a>
+            </Link>
           </div>
         </div>
       </div>

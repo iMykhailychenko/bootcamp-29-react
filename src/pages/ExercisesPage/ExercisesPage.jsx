@@ -1,3 +1,5 @@
+import { Link, Outlet } from 'react-router-dom';
+
 const subPages = [
   { href: '/exercises/timer', title: 'Timer' },
   { href: '/exercises/cancel-request', title: 'Cancel Request' },
@@ -11,12 +13,14 @@ export const ExercisesPage = () => {
       <ul className="nav nav-tabs mb-5">
         {subPages.map(item => (
           <li key={item.href} className="nav-item">
-            <a className="nav-link" to={item.href}>
+            <Link className="nav-link" to={item.href}>
               {item.title}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
+
+      <Outlet />
     </>
   );
 };

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+import { useParams, Link, Outlet } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { Loader } from '../../components/Loader';
@@ -7,7 +8,8 @@ import { getSinglePostService } from '../../services/posts.service';
 
 export const SinglePostPage = () => {
   // TODO change to dynamic value
-  const postId = 10;
+  // const postId = 10
+  const { postId } = useParams();
 
   const [post, setPost] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -36,13 +38,16 @@ export const SinglePostPage = () => {
           className="img-fluid mb-4"
           style={{ maxHeight: '600px', width: '100%', objectFit: 'cover' }}
         />
+
         <h1 className="mb-5">{post.title}</h1>
 
         <div dangerouslySetInnerHTML={{ __html: post.content.replace(/\n/g, '<br/>') }} />
 
-        <a href={`/posts/${postId}/comments`} className="btn btn-primary my-4">
+        <Link to={`/posts/${postId}/comments`} className="btn btn-primary my-4">
           Vew post comments
-        </a>
+        </Link>
+
+        <Outlet />
       </>
     )
   );

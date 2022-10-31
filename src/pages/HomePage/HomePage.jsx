@@ -2,6 +2,8 @@ export const HomePage = () => {
   return (
     <>
       <div className="p-5 mb-4 bg-white border rounded-3">
+        <a href="#example">Scroll to example</a>
+
         <div className="container-fluid py-5">
           <h1 className="display-5 fw-bold">Custom jumbotron</h1>
           <p className="col-md-8 fs-4">
@@ -15,7 +17,7 @@ export const HomePage = () => {
       </div>
 
       <div className="mt-2 mb-5">
-        <div className="row align-items-md-stretch">
+        <div id="example" className="row align-items-md-stretch">
           <div className="col-md-6">
             <div className="h-100 p-5 text-white bg-dark rounded-3">
               <h2>Change the background</h2>

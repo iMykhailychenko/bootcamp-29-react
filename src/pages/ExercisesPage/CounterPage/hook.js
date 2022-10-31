@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from '@types/react';
+import { useCallback, useEffect, useState } from 'react';
 
 const COUNTER_KEY = 'counter-key';
 
