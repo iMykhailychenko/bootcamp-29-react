@@ -1,4 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useMemo, useEffect, useState } from 'react';
+
+import { useSearchParams } from 'react-router-dom';
 
 import { Button } from '../../components/Button';
 import { PostsError, PostsItem, PostsLoader, PostsNotFound, PostsSearch } from '../../components/Posts';
@@ -6,11 +8,15 @@ import { Status } from '../../constants/fetch-status';
 import { getPostsService } from '../../services/posts.service';
 
 export const PostsListPage = () => {
-  const [posts, setPosts] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const [page, setPage] = useState(1);
+  const page = searchParams.get('page') ?? 1;
+  const search = searchParams.get('search') ?? '';
+
+  const params = useMemo(() => Object.fromEntries([...searchParams]), [searchParams]);
+
+  const [posts, setPosts] = useState(null);
   const [status, setStatus] = useState(Status.Idle);
-  const [search, setSearch] = useState('');
 
   useEffect(() => {
     setStatus(Status.Loading);
@@ -22,9 +28,17 @@ export const PostsListPage = () => {
       .catch(() => setStatus(Status.Error));
   }, [search, page]);
 
+  const handleUpdateSearch = value => {
+    setSearchParams({ search: value, page: 1 });
+  };
+
+  const handleChangePage = newPage => {
+    setSearchParams({ ...params, page: newPage });
+  };
+
   return (
     <>
-      <PostsSearch defaultValue={search} onSubmit={setSearch} />
+      <PostsSearch defaultValue={search} onSubmit={handleUpdateSearch} />
 
       <div className="container-fluid g-0 pb-5 mb-5">
         <div className="row">
@@ -40,8 +54,8 @@ export const PostsListPage = () => {
 
       <div className="pagination">
         <div className="btn-group mx-auto py-3">
-          {[...Array(posts.total_pages)].map((_, index) => (
-            <Button key={index} disabled={index + 1 === posts.page} onClick={() => setPage(index + 1)}>
+          {[...Array(posts?.total_pages)].map((_, index) => (
+            <Button key={index} disabled={index + 1 === posts?.page} onClick={() => handleChangePage(index + 1)}>
               {index + 1}
             </Button>
           ))}

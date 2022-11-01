@@ -5,6 +5,7 @@ const subPages = [
   { href: '/exercises/cancel-request', title: 'Cancel Request' },
   { href: '/exercises/counter', title: 'Counter' },
   { href: '/exercises/re-render', title: 'Re-render' },
+  { href: '/exercises/login', title: 'Login' },
 ];
 
 export const ExercisesPage = () => {
