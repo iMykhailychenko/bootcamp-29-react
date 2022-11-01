@@ -15,7 +15,7 @@ import { Layout } from './components/Layout';
 
 export const App = () => {
   return (
-    <BrowserRouter basename="/bootcamp-29-react/">
+    <BrowserRouter basename="bootcamp-29-react">
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
