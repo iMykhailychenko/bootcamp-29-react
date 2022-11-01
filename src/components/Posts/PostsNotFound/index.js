@@ -1,0 +1,1 @@
+export { PostsNotFound } from './PostsNotFound';
