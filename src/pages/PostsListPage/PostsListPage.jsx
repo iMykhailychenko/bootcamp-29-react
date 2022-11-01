@@ -37,28 +37,12 @@ export const PostsListPage = () => {
       .catch(() => setStatus(Status.Error));
   }, [search, page]);
 
-<<<<<<< HEAD
-=======
-  if (status === Status.Loading || status === Status.Idle) {
-    return <PostsLoader />;
-  }
-
-  if (status === Status.Error) {
-    return <PostsError />;
-  }
-
-  if (status === Status.Success && !posts) {
-    return <PostsNotFound />;
-  }
-
->>>>>>> origin/main
   return (
     <>
       <PostsSearch defaultValue={search} onSubmit={setSearch} />
 
       <div className="container-fluid g-0 pb-5 mb-5">
         <div className="row">
-<<<<<<< HEAD
           {(status === Status.Loading || status === Status.Idle) && <PostsLoader />}
 
           {status === Status.Error && <PostsError />}
@@ -66,11 +50,6 @@ export const PostsListPage = () => {
           {status === Status.Success && !posts && <PostsNotFound />}
 
           {posts?.data && posts.data.map(post => <PostsItem key={post.id} post={post} />)}
-=======
-          {posts.data.map(post => (
-            <PostsItem key={post.id} post={post} />
-          ))}
->>>>>>> origin/main
         </div>
       </div>
 
