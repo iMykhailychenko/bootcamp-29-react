@@ -16,7 +16,7 @@ export const Nav = () => {
           Posts list
         </NavLink>
 
-        <NavLink to="/new-post" className={activeClassName}>
+        <NavLink to="/post-new" className={activeClassName}>
           Create new post
         </NavLink>
 

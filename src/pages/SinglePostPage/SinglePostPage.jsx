@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 
-import { useParams, Link, Outlet } from 'react-router-dom';
+import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { Loader } from '../../components/Loader';
 import { getSinglePostService } from '../../services/posts.service';
 
 export const SinglePostPage = () => {
-  // TODO change to dynamic value
-  // const postId = 10
   const { postId } = useParams();
+
+  const location = useLocation();
 
   const [post, setPost] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -29,9 +29,14 @@ export const SinglePostPage = () => {
     return <Loader />;
   }
 
+  // null, undefined ?? 1
+  // false, undefined, null, 0, NaN || 1
   return (
     post && (
       <>
+        <Link to={location.state?.from || '/posts'} className="btn btn-primary mb-4">
+          Go back
+        </Link>
         <img
           src={post.image}
           alt={post.title}
