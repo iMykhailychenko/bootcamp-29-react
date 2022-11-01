@@ -22,27 +22,19 @@ export const PostsListPage = () => {
       .catch(() => setStatus(Status.Error));
   }, [search, page]);
 
-  if (status === Status.Loading || status === Status.Idle) {
-    return <PostsLoader />;
-  }
-
-  if (status === Status.Error) {
-    return <PostsError />;
-  }
-
-  if (status === Status.Success && !posts) {
-    return <PostsNotFound />;
-  }
-
   return (
     <>
       <PostsSearch defaultValue={search} onSubmit={setSearch} />
 
       <div className="container-fluid g-0 pb-5 mb-5">
         <div className="row">
-          {posts.data.map(post => (
-            <PostsItem key={post.id} post={post} />
-          ))}
+          {(status === Status.Loading || status === Status.Idle) && <PostsLoader />}
+
+          {status === Status.Error && <PostsError />}
+
+          {status === Status.Success && !posts && <PostsNotFound />}
+
+          {posts?.data && posts.data.map(post => <PostsItem key={post.id} post={post} />)}
         </div>
       </div>
 

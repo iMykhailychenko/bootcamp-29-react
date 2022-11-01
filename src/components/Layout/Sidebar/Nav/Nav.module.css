@@ -1,0 +1,15 @@
+.active {
+  color: white;
+  background: blue;
+}
+
+.link {
+  color: black;
+  background: gray;
+}
+
+.active,
+.link {
+  display: block;
+  font-size: 14px;
+}
