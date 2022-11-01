@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+<<<<<<< HEAD
 import { Button } from 'components/Button';
 import { PostsError, PostsItem, PostsLoader, PostsNotFound, PostsSearch } from 'components/Posts';
 import { getPostsService } from 'services/posts.service';
@@ -12,6 +13,19 @@ export const PostsListPage = () => {
   const [posts, setPosts] = useState(null);
 
   const [status, setStatus] = useState(Status.Idle);
+=======
+import { Button } from '../../components/Button';
+import { PostsError, PostsItem, PostsLoader, PostsNotFound, PostsSearch } from '../../components/Posts';
+import { Status } from '../../constants/fetch-status';
+import { getPostsService } from '../../services/posts.service';
+
+export const PostsListPage = () => {
+  const [posts, setPosts] = useState(null);
+
+  const [page, setPage] = useState(1);
+  const [status, setStatus] = useState(Status.Idle);
+  const [search, setSearch] = useState('');
+>>>>>>> origin/main
 
   useEffect(() => {
     setStatus(Status.Loading);
@@ -23,12 +37,28 @@ export const PostsListPage = () => {
       .catch(() => setStatus(Status.Error));
   }, [search, page]);
 
+<<<<<<< HEAD
+=======
+  if (status === Status.Loading || status === Status.Idle) {
+    return <PostsLoader />;
+  }
+
+  if (status === Status.Error) {
+    return <PostsError />;
+  }
+
+  if (status === Status.Success && !posts) {
+    return <PostsNotFound />;
+  }
+
+>>>>>>> origin/main
   return (
     <>
       <PostsSearch defaultValue={search} onSubmit={setSearch} />
 
       <div className="container-fluid g-0 pb-5 mb-5">
         <div className="row">
+<<<<<<< HEAD
           {(status === Status.Loading || status === Status.Idle) && <PostsLoader />}
 
           {status === Status.Error && <PostsError />}
@@ -36,13 +66,23 @@ export const PostsListPage = () => {
           {status === Status.Success && !posts && <PostsNotFound />}
 
           {posts?.data && posts.data.map(post => <PostsItem key={post.id} post={post} />)}
+=======
+          {posts.data.map(post => (
+            <PostsItem key={post.id} post={post} />
+          ))}
+>>>>>>> origin/main
         </div>
       </div>
 
       <div className="pagination">
         <div className="btn-group mx-auto py-3">
+<<<<<<< HEAD
           {[...Array(posts?.total_pages)].map((_, index) => (
             <Button key={index} disabled={index + 1 === posts?.page} onClick={() => setPage(index + 1)}>
+=======
+          {[...Array(posts.total_pages)].map((_, index) => (
+            <Button key={index} disabled={index + 1 === posts.page} onClick={() => setPage(index + 1)}>
+>>>>>>> origin/main
               {index + 1}
             </Button>
           ))}
