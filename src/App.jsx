@@ -15,7 +15,7 @@ import { Layout } from './components/Layout';
 
 export const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/bootcamp-29-react/">
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -41,6 +41,3 @@ export const App = () => {
     </BrowserRouter>
   );
 };
-
-// <div />
-// <div>cccc</div>
