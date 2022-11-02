@@ -1,3 +1,5 @@
+import { Suspense } from 'react';
+
 import { Link, Outlet } from 'react-router-dom';
 
 const subPages = [
@@ -21,7 +23,9 @@ export const ExercisesPage = () => {
         ))}
       </ul>
 
-      <Outlet />
+      <Suspense fallback={<p>Loading inside ExercisesPage ...</p>}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };

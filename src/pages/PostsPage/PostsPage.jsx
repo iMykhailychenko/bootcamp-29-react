@@ -1,5 +1,6 @@
 import { useMemo, useEffect, useState } from 'react';
 
+import { omitBy } from 'lodash';
 import { useSearchParams } from 'react-router-dom';
 
 import { Button } from '../../components/Button';
@@ -9,7 +10,6 @@ import { getPostsService } from '../../services/posts.service';
 
 export const PostsListPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-
   const page = searchParams.get('page') ?? 1;
   const search = searchParams.get('search') ?? '';
 
@@ -20,7 +20,7 @@ export const PostsListPage = () => {
 
   useEffect(() => {
     setStatus(Status.Loading);
-    getPostsService({ search, page })
+    getPostsService(omitBy({ search, page }, item => !item))
       .then(data => {
         setStatus(Status.Success);
         setPosts(data);
@@ -29,11 +29,11 @@ export const PostsListPage = () => {
   }, [search, page]);
 
   const handleUpdateSearch = value => {
-    setSearchParams({ search: value, page: 1 });
+    setSearchParams(omitBy({ search: value, page: 1 }, item => !item));
   };
 
   const handleChangePage = newPage => {
-    setSearchParams({ ...params, page: newPage });
+    setSearchParams(omitBy({ ...params, page: newPage }, item => !item));
   };
 
   return (
@@ -46,7 +46,7 @@ export const PostsListPage = () => {
 
           {status === Status.Error && <PostsError />}
 
-          {status === Status.Success && !posts && <PostsNotFound />}
+          {status === Status.Success && !posts?.data?.length && <PostsNotFound />}
 
           {posts?.data && posts.data.map(post => <PostsItem key={post.id} post={post} />)}
         </div>

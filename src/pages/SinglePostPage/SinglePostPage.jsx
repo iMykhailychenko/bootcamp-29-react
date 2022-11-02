@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -10,6 +10,7 @@ export const SinglePostPage = () => {
   const { postId } = useParams();
 
   const location = useLocation();
+  console.log(location);
 
   const [post, setPost] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -37,6 +38,7 @@ export const SinglePostPage = () => {
         <Link to={location.state?.from || '/posts'} className="btn btn-primary mb-4">
           Go back
         </Link>
+
         <img
           src={post.image}
           alt={post.title}
@@ -52,7 +54,9 @@ export const SinglePostPage = () => {
           Vew post comments
         </Link>
 
-        <Outlet />
+        <Suspense fallback={<p>Loading ...</p>}>
+          <Outlet />
+        </Suspense>
       </>
     )
   );

@@ -1,39 +1,19 @@
-import { useCallback, useEffect, useState } from 'react';
-
-const COUNTER_KEY = 'counter-key';
-
-const getLocalData = () => JSON.parse(localStorage.getItem(COUNTER_KEY));
+import { useCallback, useState } from 'react';
 
 export const useCounter = () => {
-  const [android, setAndroid] = useState(() => getLocalData()?.android ?? 0);
-  const [iphone, setIphone] = useState(() => getLocalData()?.iphone ?? 0);
-
-  useEffect(() => {
-    localStorage.setItem(COUNTER_KEY, JSON.stringify({ android, iphone }));
-  }, [android, iphone]);
+  const [android, setAndroid] = useState(0);
+  const [iphone, setIphone] = useState(0);
 
   const handleUpdate = useCallback(event => {
     const { name } = event.target;
 
     switch (name) {
       case 'android':
-        setAndroid(prev => {
-          if (Math.random() > 0.5) {
-            return prev + 1;
-          }
-
-          return prev - 1;
-        });
+        setAndroid(prev => prev + 1);
         break;
 
       case 'iphone':
-        setIphone(prev => {
-          if (Math.random() > 0.5) {
-            return prev + 1;
-          }
-
-          return prev - 1;
-        });
+        setIphone(prev => prev + 1);
         break;
 
       default:
