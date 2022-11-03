@@ -8,9 +8,7 @@ import { getSinglePostService } from '../../services/posts.service';
 
 export const SinglePostPage = () => {
   const { postId } = useParams();
-
   const location = useLocation();
-  console.log(location);
 
   const [post, setPost] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -30,8 +28,6 @@ export const SinglePostPage = () => {
     return <Loader />;
   }
 
-  // null, undefined ?? 1
-  // false, undefined, null, 0, NaN || 1
   return (
     post && (
       <>
