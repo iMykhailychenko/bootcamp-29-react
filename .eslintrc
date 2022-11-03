@@ -17,6 +17,7 @@
     "no-console": "off",
     "prefer-template": "off",
     "no-alert": "off",
+    "default-param-last": "off",
     "react/button-has-type": "off",
     "react/jsx-fragments": "off",
     "function-paren-newline": "off",

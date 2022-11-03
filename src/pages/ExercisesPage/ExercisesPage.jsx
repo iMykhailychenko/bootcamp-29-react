@@ -8,6 +8,7 @@ const subPages = [
   { href: '/exercises/counter', title: 'Counter' },
   { href: '/exercises/re-render', title: 'Re-render' },
   { href: '/exercises/login', title: 'Login' },
+  { href: '/exercises/redux-counter', title: 'Redux Counter' },
 ];
 
 export const ExercisesPage = () => {

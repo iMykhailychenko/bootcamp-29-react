@@ -1,0 +1,2 @@
+export const IPHONE_COUNTER = 'IPHONE_COUNTER';
+export const ANDROID_COUNTER = 'ANDROID_COUNTER';

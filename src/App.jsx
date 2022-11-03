@@ -23,6 +23,7 @@ const CounterPage = lazy(() => import('./pages/ExercisesPage/CounterPage'));
 const LoginPage = lazy(() => import('./pages/ExercisesPage/LoginPage'));
 const RerenderPage = lazy(() => import('./pages/ExercisesPage/RerenderPage'));
 const TimerPage = lazy(() => import('./pages/ExercisesPage/TimerPage'));
+const CounterReduxPage = lazy(() => import('./pages/ExercisesPage/CounterReduxPage'));
 const HomePage = lazy(() => import('./pages/HomePage'));
 const NewPostPage = lazy(() => import('./pages/NewPostPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
@@ -52,6 +53,7 @@ export const App = () => {
               <Route index element={<Navigate to="/exercises/timer" />} />
 
               <Route path="timer" element={<TimerPage />} />
+              <Route path="redux-counter" element={<CounterReduxPage />} />
               <Route path="cancel-request" element={<CancelRequest />} />
               <Route path="counter" element={<CounterPage />} />
               <Route path="re-render" element={<RerenderPage />} />
