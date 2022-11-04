@@ -1,17 +1,21 @@
-## Lesson 5 - 24/10/2022
-- Життєвий цикл компонента. http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
-- методи життєвого циклу компонент-класів.
-- Збереження колекції юзерів в localStorage (componentDidMount та componentDidUpdate)
-- Модальне вікно (componentDidMount та componentWillUnmount)
-- Таймер і memory leak з setState() без componentWillUnmount
-- shouldComponentUpdate / PureComponent
-- Портали
+## Lesson 11 - 3/11/2022
 
-## Lesson 6 - 13/09/2022
-https://github.com/iMykhailychenko/goit-blog-backend
+- Основні концепції: store, state, actions, reducers
+- Створюємо та налаштовуємо сховище
+- Готуємо екшени
+- Пишемо редюсер
+- Пакет react-redux
+- Компонент Provider
+- Хуки useDispatch і useSelector
+- Redux DevTools
+- Композиція редюсерів з combineReducers
+- Feature based структура файлів та папок
 
-- Методи життєвого циклу та HTTP-запити
-- Стан та компонент для індикатора завантаження
-- Стан та компонент для обробки помилки
-- Паттерн "State machine" для зберігання статусу запиту
-- Витік пам'яті при розмонтуванні компонента з активним запитом HTTP
+## Lesson 12 - 4/11/2022
+
+- Розбираємо Redux Toolkit та рефакторимо код попереднього заняття
+- configureStore()
+- createReducer()
+- createAction()
+- createSlice()
+- Бібліотека redux-persist
