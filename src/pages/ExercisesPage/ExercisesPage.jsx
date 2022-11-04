@@ -9,6 +9,7 @@ const subPages = [
   { href: '/exercises/re-render', title: 'Re-render' },
   { href: '/exercises/login', title: 'Login' },
   { href: '/exercises/redux-counter', title: 'Redux Counter' },
+  { href: '/exercises/users', title: 'Users' },
 ];
 
 export const ExercisesPage = () => {

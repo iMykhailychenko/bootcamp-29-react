@@ -18,6 +18,7 @@ import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import { Layout } from './components/Layout';
 
 const ExercisesPage = lazy(() => import('./pages/ExercisesPage'));
+const UsersPage = lazy(() => import('./pages/ExercisesPage/UsersPage'));
 const CancelRequest = lazy(() => import('./pages/ExercisesPage/CancelRequest'));
 const CounterPage = lazy(() => import('./pages/ExercisesPage/CounterPage'));
 const LoginPage = lazy(() => import('./pages/ExercisesPage/LoginPage'));
@@ -58,6 +59,7 @@ export const App = () => {
               <Route path="counter" element={<CounterPage />} />
               <Route path="re-render" element={<RerenderPage />} />
               <Route path="login" element={<LoginPage />} />
+              <Route path="users" element={<UsersPage />} />
             </Route>
 
             <Route path="*" element={<NotFoundPage />} />

@@ -12,14 +12,4 @@ export const counterReducer = (state = counterInitialState, action) => {
     default:
       return state;
   }
-
-  //   if (action.type === ANDROID_COUNTER) {
-  //     return { ...state, android: state.android + action.payload }; // -> { iphone: 0, android: 1 }
-  //   }
-
-  //   if (action.type === IPHONE_COUNTER) {
-  //     return { ...state, iphone: state.iphone + action.payload }; // -> { iphone: 1, android: 0 }
-  //   }
-
-  //   return state;
 };

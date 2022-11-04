@@ -1,19 +1,20 @@
-import { useState } from 'react';
-
-import usersJson from 'assets/users.json';
+import { useDispatch, useSelector } from 'react-redux';
+import { userDeleteAction, userSearchAction } from 'redux/store';
 
 import { UsersItem } from './UsersItem';
 
-export const UsersList = () => {
-  const [search, setSearch] = useState('');
-  const [usersList, setUsersList] = useState(usersJson);
+export const UsersPage = () => {
+  const dispatch = useDispatch();
+  const search = useSelector(state => state.users.search);
+  const usersList = useSelector(state => state.users.usersList);
 
   const handleDeleteUser = id => {
-    setUsersList(prevState => prevState.usersList.filter(user => user.id !== id));
+    dispatch(userDeleteAction(id) /* -> {type: 'USERS_DELETE', payload: 1} */);
+    // setUsersList(prevState => prevState.filter(user => user.id !== id));
   };
 
   const handleSearchChange = event => {
-    setSearch(event.target.value);
+    dispatch(userSearchAction(event.target.value));
   };
 
   const filteredUsers = usersList.filter(user => user.name.toLowerCase().includes(search.toLowerCase()));
