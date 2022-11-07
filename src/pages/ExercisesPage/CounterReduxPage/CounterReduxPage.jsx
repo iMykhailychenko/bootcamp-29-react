@@ -4,7 +4,6 @@ import { androidCountAction, iphoneCountAction } from 'redux/counter/actions.cou
 export const CounterReduxPage = () => {
   const dispatch = useDispatch();
   const counter = useSelector(state => state.counter);
-  console.log(counter);
 
   const handleClickAndroid = () => {
     dispatch(androidCountAction(10) /* -> { type: ANDROID_COUNTER, payload: 10 } */);

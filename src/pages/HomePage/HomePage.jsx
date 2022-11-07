@@ -1,4 +1,19 @@
+import { useEffect } from 'react';
+
+import { Status } from 'config';
+import { useDispatch, useSelector } from 'react-redux';
+import { contactsOperation } from 'redux/store';
+
 export const HomePage = () => {
+  const dispatch = useDispatch();
+
+  const data = useSelector(state => state.contacts.data);
+  const status = useSelector(state => state.contacts.status);
+
+  useEffect(() => {
+    dispatch(contactsOperation());
+  }, [dispatch]);
+
   return (
     <>
       <div className="p-5 mb-4 bg-white border rounded-3">
@@ -46,6 +61,10 @@ export const HomePage = () => {
           </div>
         </div>
       </div>
+
+      {(status === Status.LOADING || status === Status.INIT) && <p>Loading ... </p>}
+
+      {status === Status.SUCCESS && data.map(item => <div key={item.id}>{item.name}</div>)}
     </>
   );
 };
