@@ -1,32 +1,34 @@
-import { useMemo, useEffect, useState } from 'react';
+import { useMemo, useEffect } from 'react';
 
 import { omitBy } from 'lodash';
+import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
+import { getPostsOperation } from 'redux/posts/operation.posts';
 
 import { Button } from '../../components/Button';
 import { PostsError, PostsItem, PostsLoader, PostsNotFound, PostsSearch } from '../../components/Posts';
 import { Status } from '../../constants/fetch-status';
-import { getPostsService } from '../../services/posts.service';
 
 export const PostsListPage = () => {
+  const dispatch = useDispatch();
+
   const [searchParams, setSearchParams] = useSearchParams();
   const page = searchParams.get('page') ?? 1;
   const search = searchParams.get('search') ?? '';
 
   const params = useMemo(() => Object.fromEntries([...searchParams]), [searchParams]);
 
-  const [posts, setPosts] = useState(null);
-  const [status, setStatus] = useState(Status.Idle);
+  const posts = useSelector(state => state.posts.data);
+  const status = useSelector(state => state.posts.status);
 
   useEffect(() => {
-    setStatus(Status.Loading);
-    getPostsService(omitBy({ search, page }, item => !item))
-      .then(data => {
-        setStatus(Status.Success);
-        setPosts(data);
-      })
-      .catch(() => setStatus(Status.Error));
-  }, [search, page]);
+    // const obj = { search: '', page: 10, limit: 0 }
+    // omitBy(obj, item => !item) -> { page: 10 }
+    // ?search=&page=10&limit=0 -> ?page=10
+    const newParams = omitBy({ search, page }, item => !item);
+
+    dispatch(getPostsOperation(newParams));
+  }, [dispatch, search, page]);
 
   const handleUpdateSearch = value => {
     setSearchParams(omitBy({ search: value, page: 1 }, item => !item));

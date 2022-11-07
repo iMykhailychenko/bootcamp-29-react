@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { userDeleteAction, userSearchAction } from 'redux/store';
+import { userDeleteAction, userSearchAction } from 'redux/users/slice.users';
 
 import { UsersItem } from './UsersItem';
 
