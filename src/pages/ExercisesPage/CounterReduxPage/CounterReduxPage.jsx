@@ -1,10 +1,15 @@
+import { useState } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { androidCountAction, iphoneCountAction } from 'redux/counter/actions.counter';
+import { selectCounter } from 'redux/counter/selectors.counter';
 
 export const CounterReduxPage = () => {
+  const [isOpen, setIsOpen] = useState(true);
+
+  // ---------------
   const dispatch = useDispatch();
-  const counter = useSelector(state => state.counter);
-  console.log(counter);
+  const counter = useSelector(selectCounter);
 
   const handleClickAndroid = () => {
     dispatch(androidCountAction(10) /* -> { type: ANDROID_COUNTER, payload: 10 } */);
@@ -22,6 +27,10 @@ export const CounterReduxPage = () => {
       <p className="text-center my-5" style={{ fontSize: 80 }}>
         iPhone: {counter.iphone}
       </p>
+
+      <button className="btn btn-primary" type="button" onClick={() => setIsOpen(prev => !prev)}>
+        {isOpen ? 'Open' : 'Close'}
+      </button>
 
       <div className="d-flex align-items-center justify-content-center w-100">
         <button

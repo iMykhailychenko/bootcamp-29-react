@@ -12,8 +12,11 @@ const usersSlice = createSlice({
     userDeleteAction: (state, action) => {
       state.usersList = state.usersList.filter(user => user.id !== action.payload);
     },
+    toggleAction: state => {
+      state.toggle = !state.toggle;
+    },
   },
 });
 
-export const { userSearchAction, userDeleteAction } = usersSlice.actions;
+export const { userSearchAction, userDeleteAction, toggleAction } = usersSlice.actions;
 export const userReducer = usersSlice.reducer;

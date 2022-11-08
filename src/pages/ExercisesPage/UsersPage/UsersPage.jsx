@@ -1,23 +1,30 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { selectFilteredUsers, selectUserSearch } from 'redux/users/selectors.users';
 import { userDeleteAction, userSearchAction } from 'redux/users/slice.users';
 
 import { UsersItem } from './UsersItem';
 
 export const UsersPage = () => {
   const dispatch = useDispatch();
-  const search = useSelector(state => state.users.search);
-  const usersList = useSelector(state => state.users.usersList);
+
+  // До
+  // const search = useSelector(state => state.users.search);
+
+  // Післ
+  // const selectUserSearch = state => state.users.search;
+
+  const search = useSelector(selectUserSearch); // '' -> ''
+  const usersList = useSelector(selectFilteredUsers); // [] -> [] -> re-render
 
   const handleDeleteUser = id => {
-    dispatch(userDeleteAction(id) /* -> {type: 'USERS_DELETE', payload: 1} */);
-    // setUsersList(prevState => prevState.filter(user => user.id !== id));
+    dispatch(userDeleteAction(id));
   };
 
   const handleSearchChange = event => {
     dispatch(userSearchAction(event.target.value));
   };
 
-  const filteredUsers = usersList.filter(user => user.name.toLowerCase().includes(search.toLowerCase()));
+  console.log('UsersPage');
 
   return (
     <>
@@ -32,7 +39,7 @@ export const UsersPage = () => {
       </div>
 
       <div className="mb-5">
-        {filteredUsers.map(user => (
+        {usersList.map(user => (
           <UsersItem key={user.id} user={user} onDelete={handleDeleteUser} />
         ))}
       </div>

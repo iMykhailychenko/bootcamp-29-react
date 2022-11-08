@@ -16,6 +16,10 @@ export const Nav = () => {
           Posts list
         </NavLink>
 
+        <NavLink to="/rtk-posts" className={activeClassName}>
+          RTK Posts list
+        </NavLink>
+
         <NavLink to="/post-new" className={activeClassName}>
           Create new post
         </NavLink>

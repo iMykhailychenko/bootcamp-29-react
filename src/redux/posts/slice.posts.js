@@ -4,10 +4,6 @@ import { Status } from 'config';
 import { postsInitialState } from './initial-state.posts';
 import { getPostsOperation } from './operation.posts';
 
-console.log(getPostsOperation.pending.toString());
-console.log(getPostsOperation.fulfilled.toString());
-console.log(getPostsOperation.rejected.toString());
-
 const postsSlice = createSlice({
   name: 'posts',
   initialState: postsInitialState,

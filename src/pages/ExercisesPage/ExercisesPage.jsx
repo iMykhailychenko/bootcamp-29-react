@@ -1,6 +1,8 @@
 import { Suspense } from 'react';
 
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, Outlet } from 'react-router-dom';
+import { toggleAction } from 'redux/users/slice.users';
 
 const subPages = [
   { href: '/exercises/timer', title: 'Timer' },
@@ -13,6 +15,9 @@ const subPages = [
 ];
 
 export const ExercisesPage = () => {
+  const dispatch = useDispatch();
+  const toggle = useSelector(state => state.users.toggle);
+
   return (
     <>
       <ul className="nav nav-tabs mb-5">
@@ -24,6 +29,10 @@ export const ExercisesPage = () => {
           </li>
         ))}
       </ul>
+
+      <button type="button" onClick={() => dispatch(toggleAction())}>
+        {toggle ? 'Open' : 'Close'}
+      </button>
 
       <Suspense fallback={<p>Loading inside ExercisesPage ...</p>}>
         <Outlet />
