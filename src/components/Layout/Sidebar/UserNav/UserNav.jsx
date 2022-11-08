@@ -1,7 +1,6 @@
+import { Button } from 'components/Button';
+import { UserCard } from 'components/UserCard/UserCard';
 import { NavLink } from 'react-router-dom';
-
-import { Button } from '../../../Button';
-import { UserCard } from '../../../UserCard/UserCard';
 
 const activeClassName = ({ isActive }) => (isActive ? 'btn btn-primary mb-2' : 'btn btn-light mb-2');
 
