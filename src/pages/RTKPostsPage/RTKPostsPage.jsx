@@ -4,8 +4,6 @@ import { omitBy } from 'lodash';
 import { useSearchParams } from 'react-router-dom';
 import { useGetPostQuery } from 'redux/rtk-posts/api.rtk-posts';
 
-import { Status } from 'constants/fetch-status';
-
 export const RTKPostsPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const page = searchParams.get('page') ?? 1;

@@ -1,6 +1,6 @@
-import { Status } from 'config';
+import { Status } from 'constants/fetch-status';
 
 export const postsInitialState = {
-  status: Status.INIT,
+  status: Status.Init,
   data: null,
 };

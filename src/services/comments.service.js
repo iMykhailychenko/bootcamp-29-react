@@ -1,14 +1,11 @@
 import axios from 'axios';
 
 const defaultParams = {
-  limit: 4,
+  limit: 6,
 };
 
 const commentsApi = axios.create({
-  baseURL:
-    process.env.NODE_ENV === 'production'
-      ? 'https://taupe-croissant-c4162a.netlify.app/api'
-      : 'http://70.34.201.18:4444',
+  baseURL: 'http://70.34.201.18:4444',
 });
 
 export const createNewCommentService = async (postId, body) => {

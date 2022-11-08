@@ -1,5 +1,5 @@
 export const Status = {
-  Idle: 'idle',
+  Init: 'init',
   Loading: 'loading',
   Error: 'error',
   Success: 'success',

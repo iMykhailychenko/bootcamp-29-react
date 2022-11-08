@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { Status } from 'config';
+
+import { Status } from 'constants/fetch-status';
 
 import { postsInitialState } from './initial-state.posts';
 import { getPostsOperation } from './operation.posts';
@@ -9,14 +10,14 @@ const postsSlice = createSlice({
   initialState: postsInitialState,
   extraReducers: {
     [getPostsOperation.pending]: state => {
-      state.status = Status.LOADING;
+      state.status = Status.Loading;
     },
     [getPostsOperation.fulfilled]: (state, action) => {
-      state.status = Status.SUCCESS;
+      state.status = Status.Success;
       state.data = action.payload;
     },
     [getPostsOperation.rejected]: state => {
-      state.status = Status.ERROR;
+      state.status = Status.Error;
     },
   },
 });
