@@ -1,6 +1,8 @@
-import { lazy, Suspense } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 
+import { useDispatch } from 'react-redux';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+import { getProfileOperation } from 'redux/profile/operation.profile';
 
 import { Layout } from './components/Layout';
 
@@ -22,6 +24,12 @@ const LoginPage = lazy(() => import('./pages/LoginPage'));
 const JoinPage = lazy(() => import('./pages/JoinPage'));
 
 export const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProfileOperation());
+  }, [dispatch]);
+
   return (
     <BrowserRouter basename="bootcamp-29-react">
       <Layout>

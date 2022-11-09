@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { createUserService } from 'services/users.service';
 
 const year = new Date().getFullYear();
 const initialState = {
@@ -11,6 +13,8 @@ const initialState = {
 };
 
 export const JoinPage = () => {
+  const navigate = useNavigate();
+
   const [isLoading, setIsLoading] = useState(false);
   const [values, setValues] = useState(initialState);
 
@@ -21,9 +25,17 @@ export const JoinPage = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-
     setIsLoading(true);
-    // TODO - Join here
+
+    createUserService(values)
+      .then(() => {
+        toast.success('Ви успішно зареєструвались');
+        navigate('/login');
+      })
+      .catch(() => {
+        toast.error('Упс, виникла помилка');
+      })
+      .finally(() => setIsLoading(false));
   };
 
   return (

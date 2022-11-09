@@ -1,4 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 import { usersInitialState } from './initial-state.users';
 
@@ -19,4 +21,11 @@ const usersSlice = createSlice({
 });
 
 export const { userSearchAction, userDeleteAction, toggleAction } = usersSlice.actions;
-export const userReducer = usersSlice.reducer;
+
+const persistConfig = {
+  key: 'bootcamp-29',
+  storage,
+  whitelist: ['usersList'],
+};
+
+export const usersReducer = persistReducer(persistConfig, usersSlice.reducer);
