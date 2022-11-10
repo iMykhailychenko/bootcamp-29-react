@@ -1,21 +1,15 @@
-## Lesson 11 - 3/11/2022
+## Lesson 15 - 09/11/2022
 
-- Основні концепції: store, state, actions, reducers
-- Створюємо та налаштовуємо сховище
-- Готуємо екшени
-- Пишемо редюсер
-- Пакет react-redux
-- Компонент Provider
-- Хуки useDispatch і useSelector
-- Redux DevTools
-- Композиція редюсерів з combineReducers
-- Feature based структура файлів та папок
-
-## Lesson 12 - 4/11/2022
-
-- Розбираємо Redux Toolkit та рефакторимо код попереднього заняття
-- configureStore()
-- createReducer()
-- createAction()
-- createSlice()
 - Бібліотека redux-persist
+- Знайомство з JWT
+- Реєстрація, логін та логаут користувача
+- Персист токена з redux-persist
+- Рефреш користувача за токеном
+- Робота з приватними ресурсами користувача
+
+## Lesson 16 - 10/11/2022
+
+- Приватні та публічні маршрути
+- Пишемо компоненти PrivateRoute, PublicRoute
+- Просунуті редіректи з використанням location.state
+

@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 import { privateApi, publicApi } from 'http/http';
 
 const defaultParams = {
