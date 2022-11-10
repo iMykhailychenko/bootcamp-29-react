@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -8,7 +8,6 @@ import { getSinglePostService } from '../../services/posts.service';
 
 export const SinglePostPage = () => {
   const { postId } = useParams();
-
   const location = useLocation();
 
   const [post, setPost] = useState(null);
@@ -52,7 +51,9 @@ export const SinglePostPage = () => {
           Vew post comments
         </Link>
 
-        <Outlet />
+        <Suspense fallback={<p>Loading ...</p>}>
+          <Outlet />
+        </Suspense>
       </>
     )
   );
