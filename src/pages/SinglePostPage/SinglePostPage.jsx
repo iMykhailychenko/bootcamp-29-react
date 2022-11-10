@@ -28,13 +28,14 @@ export const SinglePostPage = () => {
     return <Loader />;
   }
 
+  // null, undefined ?? 1
+  // false, undefined, null, 0, NaN || 1
   return (
     post && (
       <>
         <Link to={location.state?.from || '/posts'} className="btn btn-primary mb-4">
           Go back
         </Link>
-
         <img
           src={post.image}
           alt={post.title}
