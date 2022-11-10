@@ -1,10 +1,18 @@
 import { Button } from 'components/Button';
 import { UserCard } from 'components/UserCard/UserCard';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { logOutAction } from 'redux/auth/slice.auth';
 
 const activeClassName = ({ isActive }) => (isActive ? 'btn btn-primary mb-2' : 'btn btn-light mb-2');
 
 export const UserNav = () => {
+  const dispatch = useDispatch();
+
+  const handleLogUot = () => {
+    dispatch(logOutAction());
+  };
+
   return (
     <div className="d-flex flex-column justify-content-between h-100">
       <div className="d-flex flex-column justify-content-between">
@@ -29,7 +37,9 @@ export const UserNav = () => {
         </NavLink>
       </div>
 
-      <Button className="btn-danger mt-auto">Log Out</Button>
+      <Button onClick={handleLogUot} className="btn-danger mt-auto">
+        Log Out
+      </Button>
     </div>
   );
 };

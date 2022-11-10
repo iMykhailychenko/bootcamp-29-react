@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { getProfileOperation } from 'redux/profile/operation.profile';
 
 import { Status } from 'constants/fetch-status';
 
@@ -10,6 +11,9 @@ import { loginOperation } from './operations.auth';
 const authSlice = createSlice({
   name: 'auth',
   initialState: authInitialState,
+  reducers: {
+    logOutAction: () => authInitialState,
+  },
   extraReducers: {
     [loginOperation.pending]: state => {
       state.status = Status.Loading;
@@ -23,6 +27,11 @@ const authSlice = createSlice({
     [loginOperation.rejected]: state => {
       state.status = Status.Error;
     },
+
+    [getProfileOperation.fulfilled]: state => {
+      state.status = Status.Success;
+    },
+    [getProfileOperation.rejected]: () => authInitialState,
   },
 });
 
@@ -31,5 +40,7 @@ const persistConfig = {
   storage,
   blacklist: ['status'],
 };
+
+export const { logOutAction } = authSlice.actions;
 
 export const authReducer = persistReducer(persistConfig, authSlice.reducer);

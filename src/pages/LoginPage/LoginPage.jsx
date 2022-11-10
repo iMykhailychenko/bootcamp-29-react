@@ -1,14 +1,13 @@
 import { useState } from 'react';
 
 import { useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { loginOperation } from 'redux/auth/operations.auth';
 
 const year = new Date().getFullYear();
 
 export const LoginPage = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [values, setValues] = useState({
@@ -27,7 +26,6 @@ export const LoginPage = () => {
     try {
       await dispatch(loginOperation(values)).unwrap();
       toast.success('Ви успішно авторизовані');
-      navigate('/');
     } catch {
       toast.error('Не вірний email або пароль');
     }

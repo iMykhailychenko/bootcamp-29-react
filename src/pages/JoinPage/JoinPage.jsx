@@ -1,7 +1,9 @@
 import { useState } from 'react';
 
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { loginOperation } from 'redux/auth/operations.auth';
 import { createUserService } from 'services/users.service';
 
 const year = new Date().getFullYear();
@@ -13,7 +15,7 @@ const initialState = {
 };
 
 export const JoinPage = () => {
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [isLoading, setIsLoading] = useState(false);
   const [values, setValues] = useState(initialState);
@@ -30,7 +32,8 @@ export const JoinPage = () => {
     createUserService(values)
       .then(() => {
         toast.success('Ви успішно зареєструвались');
-        navigate('/login');
+
+        dispatch(loginOperation({ email: values.email, password: values.password }));
       })
       .catch(() => {
         toast.error('Упс, виникла помилка');

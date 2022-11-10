@@ -1,7 +1,10 @@
 import { useEffect, lazy, Suspense } from 'react';
 
-import { useDispatch } from 'react-redux';
+import { PrivateRoute } from 'components/PrivateRoute/PrivateRoute';
+import { PublicRoute } from 'components/PublicRoute/PublicRoute';
+import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+import { selectAccessToken } from 'redux/auth/selectors.auth';
 import { getProfileOperation } from 'redux/profile/operation.profile';
 
 import { Layout } from './components/Layout';
@@ -25,10 +28,13 @@ const JoinPage = lazy(() => import('./pages/JoinPage'));
 
 export const App = () => {
   const dispatch = useDispatch();
+  const token = useSelector(selectAccessToken);
 
   useEffect(() => {
-    dispatch(getProfileOperation());
-  }, [dispatch]);
+    if (token) {
+      dispatch(getProfileOperation());
+    }
+  }, [dispatch, token]);
 
   return (
     <BrowserRouter basename="bootcamp-29-react">
@@ -37,29 +43,33 @@ export const App = () => {
           <Routes>
             <Route path="/" element={<HomePage />} />
 
-            <Route path="/posts" element={<PostsPage />} />
-            <Route path="/rtk-posts" element={<RTKPostsPage />} />
+            <Route path="/" element={<PrivateRoute />}>
+              <Route path="/posts" element={<PostsPage />} />
+              <Route path="/rtk-posts" element={<RTKPostsPage />} />
 
-            <Route path="/posts/:postId" element={<SinglePostPage />}>
-              <Route path="comments" element={<CommentsPage />} />
+              <Route path="/posts/:postId" element={<SinglePostPage />}>
+                <Route path="comments" element={<CommentsPage />} />
+              </Route>
+
+              <Route path="/post-new" element={<NewPostPage />} />
+              <Route path="/new-post" element={<Navigate to="/post-new" />} />
+
+              <Route path="/exercises" element={<ExercisesPage />}>
+                <Route index element={<Navigate to="timer" />} />
+
+                <Route path="timer" element={<TimerPage />} />
+                <Route path="redux-counter" element={<CounterReduxPage />} />
+                <Route path="cancel-request" element={<CancelRequest />} />
+                <Route path="counter" element={<CounterPage />} />
+                <Route path="re-render" element={<RerenderPage />} />
+                <Route path="users" element={<UsersPage />} />
+              </Route>
             </Route>
 
-            <Route path="/post-new" element={<NewPostPage />} />
-            <Route path="/new-post" element={<Navigate to="/post-new" />} />
-
-            <Route path="/exercises" element={<ExercisesPage />}>
-              <Route index element={<Navigate to="timer" />} />
-
-              <Route path="timer" element={<TimerPage />} />
-              <Route path="redux-counter" element={<CounterReduxPage />} />
-              <Route path="cancel-request" element={<CancelRequest />} />
-              <Route path="counter" element={<CounterPage />} />
-              <Route path="re-render" element={<RerenderPage />} />
-              <Route path="users" element={<UsersPage />} />
+            <Route path="/" element={<PublicRoute />}>
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/join" element={<JoinPage />} />
             </Route>
-
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/join" element={<JoinPage />} />
 
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
