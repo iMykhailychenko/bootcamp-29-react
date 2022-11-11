@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/bootcamp-29-react/static/css/main.980cc6c1.css",
-    "main.js": "/bootcamp-29-react/static/js/main.ed8046dc.js",
+    "main.js": "/bootcamp-29-react/static/js/main.bab93240.js",
     "static/js/678.0814a892.chunk.js": "/bootcamp-29-react/static/js/678.0814a892.chunk.js",
     "static/js/322.0b64d42f.chunk.js": "/bootcamp-29-react/static/js/322.0b64d42f.chunk.js",
     "static/js/620.ec1aa05e.chunk.js": "/bootcamp-29-react/static/js/620.ec1aa05e.chunk.js",
@@ -13,9 +13,9 @@
     "static/js/415.1e8b9a0b.chunk.js": "/bootcamp-29-react/static/js/415.1e8b9a0b.chunk.js",
     "static/js/887.470860e8.chunk.js": "/bootcamp-29-react/static/js/887.470860e8.chunk.js",
     "static/css/693.5141e994.chunk.css": "/bootcamp-29-react/static/css/693.5141e994.chunk.css",
-    "static/js/693.f3566030.chunk.js": "/bootcamp-29-react/static/js/693.f3566030.chunk.js",
+    "static/js/693.063cc75e.chunk.js": "/bootcamp-29-react/static/js/693.063cc75e.chunk.js",
     "static/css/79.5141e994.chunk.css": "/bootcamp-29-react/static/css/79.5141e994.chunk.css",
-    "static/js/79.2063b13b.chunk.js": "/bootcamp-29-react/static/js/79.2063b13b.chunk.js",
+    "static/js/79.2a86f182.chunk.js": "/bootcamp-29-react/static/js/79.2a86f182.chunk.js",
     "static/js/487.f32ec6fe.chunk.js": "/bootcamp-29-react/static/js/487.f32ec6fe.chunk.js",
     "static/js/452.782310b9.chunk.js": "/bootcamp-29-react/static/js/452.782310b9.chunk.js",
     "static/js/175.4d81029c.chunk.js": "/bootcamp-29-react/static/js/175.4d81029c.chunk.js",
@@ -28,7 +28,7 @@
     "static/media/cat.webp": "/bootcamp-29-react/static/media/cat.7b3d56830f2a9b861f3e.webp",
     "index.html": "/bootcamp-29-react/index.html",
     "main.980cc6c1.css.map": "/bootcamp-29-react/static/css/main.980cc6c1.css.map",
-    "main.ed8046dc.js.map": "/bootcamp-29-react/static/js/main.ed8046dc.js.map",
+    "main.bab93240.js.map": "/bootcamp-29-react/static/js/main.bab93240.js.map",
     "678.0814a892.chunk.js.map": "/bootcamp-29-react/static/js/678.0814a892.chunk.js.map",
     "322.0b64d42f.chunk.js.map": "/bootcamp-29-react/static/js/322.0b64d42f.chunk.js.map",
     "620.ec1aa05e.chunk.js.map": "/bootcamp-29-react/static/js/620.ec1aa05e.chunk.js.map",
@@ -40,9 +40,9 @@
     "415.1e8b9a0b.chunk.js.map": "/bootcamp-29-react/static/js/415.1e8b9a0b.chunk.js.map",
     "887.470860e8.chunk.js.map": "/bootcamp-29-react/static/js/887.470860e8.chunk.js.map",
     "693.5141e994.chunk.css.map": "/bootcamp-29-react/static/css/693.5141e994.chunk.css.map",
-    "693.f3566030.chunk.js.map": "/bootcamp-29-react/static/js/693.f3566030.chunk.js.map",
+    "693.063cc75e.chunk.js.map": "/bootcamp-29-react/static/js/693.063cc75e.chunk.js.map",
     "79.5141e994.chunk.css.map": "/bootcamp-29-react/static/css/79.5141e994.chunk.css.map",
-    "79.2063b13b.chunk.js.map": "/bootcamp-29-react/static/js/79.2063b13b.chunk.js.map",
+    "79.2a86f182.chunk.js.map": "/bootcamp-29-react/static/js/79.2a86f182.chunk.js.map",
     "487.f32ec6fe.chunk.js.map": "/bootcamp-29-react/static/js/487.f32ec6fe.chunk.js.map",
     "452.782310b9.chunk.js.map": "/bootcamp-29-react/static/js/452.782310b9.chunk.js.map",
     "175.4d81029c.chunk.js.map": "/bootcamp-29-react/static/js/175.4d81029c.chunk.js.map",
@@ -53,6 +53,6 @@
   },
   "entrypoints": [
     "static/css/main.980cc6c1.css",
-    "static/js/main.ed8046dc.js"
+    "static/js/main.bab93240.js"
   ]
 }
