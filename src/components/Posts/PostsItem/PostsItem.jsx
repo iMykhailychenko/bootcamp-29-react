@@ -1,9 +1,11 @@
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import { cutString } from 'helpers/cut-string';
+import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 
-export const PostsItem = ({ post }) => {
+export const PostsItem = ({ post, onDelete }) => {
   const location = useLocation();
+  const id = useSelector(state => state.profile.data?.id);
 
   return (
     <div className="col-12 col-xl-6 col-xxl-4 mb-4">
@@ -27,9 +29,11 @@ export const PostsItem = ({ post }) => {
           </ul>
 
           <div className="d-flex">
-            <button type="button" className="btn btn-link">
-              Delete post
-            </button>
+            {id === post.user_id && (
+              <button type="button" className="btn btn-link" onClick={() => onDelete(post.id)}>
+                Delete post
+              </button>
+            )}
 
             <Link to={`/posts/${post.id}`} state={{ from: location }} className="btn btn-link ms-3">
               Read post

@@ -42,14 +42,13 @@ export const App = () => {
         <Suspense fallback={<p>Loading...</p>}>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/posts" element={<PostsPage />} />
+            <Route path="/posts/:postId" element={<SinglePostPage />}>
+              <Route path="comments" element={<CommentsPage />} />
+            </Route>
 
             <Route path="/" element={<PrivateRoute />}>
-              <Route path="/posts" element={<PostsPage />} />
               <Route path="/rtk-posts" element={<RTKPostsPage />} />
-
-              <Route path="/posts/:postId" element={<SinglePostPage />}>
-                <Route path="comments" element={<CommentsPage />} />
-              </Route>
 
               <Route path="/post-new" element={<NewPostPage />} />
               <Route path="/new-post" element={<Navigate to="/post-new" />} />
