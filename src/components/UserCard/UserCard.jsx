@@ -5,8 +5,6 @@ import { Status } from 'constants/fetch-status';
 export const UserCard = () => {
   const profile = useSelector(state => state.profile);
 
-  console.log(profile);
-
   if (profile.status === Status.Loading || profile.status === Status.Init) {
     return <p>Loading ...</p>;
   }

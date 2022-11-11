@@ -28,6 +28,10 @@ export const UserNav = () => {
           Posts list
         </NavLink>
 
+        <NavLink to="/rtk-posts" style={{ textAlign: 'left', marginLeft: '-10px' }} className={activeClassName}>
+          RTK Posts list
+        </NavLink>
+
         <NavLink to="/new-post" style={{ textAlign: 'left', marginLeft: '-10px' }} className={activeClassName}>
           Create new post
         </NavLink>
