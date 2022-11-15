@@ -15,9 +15,8 @@ export const Layout = ({ children }) => {
           <div className="tab-pane fade show active">{children}</div>
         </main>
       </div>
-
+      hello
       <EasterEgg />
-
       <ToastContainer />
       <ConfettiContainer />
     </>
